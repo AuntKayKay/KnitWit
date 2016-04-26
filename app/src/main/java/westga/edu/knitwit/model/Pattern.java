@@ -1,6 +1,7 @@
 package westga.edu.knitwit.model;
 
 /**
+ * Pattern Class
  * Created by Kaleigh on 4/25/2016.
  */
 public class Pattern {

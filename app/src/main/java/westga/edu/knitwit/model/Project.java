@@ -1,6 +1,7 @@
 package westga.edu.knitwit.model;
 
 /**
+ * Project Class
  * Created by Kaleigh on 4/25/2016.
  */
 public class Project {

@@ -1,6 +1,7 @@
 package westga.edu.knitwit.model;
 
 /**
+ * Gauge Class
  * Created by Kaleigh on 4/25/2016.
  */
 public class Gauge {
