@@ -8,6 +8,8 @@ public class Gauge {
 
     public int stitchesPerRow;
     public int rowsPerUnit;
+    public int swatchWidth;
+    public int swatchHeight;
     public String unit;
 
     /**
@@ -43,6 +45,16 @@ public class Gauge {
         return this.unit;
     }
 
+
+    public int getSwatchWidth() {
+        return this.swatchWidth;
+    }
+
+
+    public int getSwatchHeight() {
+        return this.swatchHeight;
+    }
+
     //Mutator Methods//
 
     /**
@@ -69,13 +81,23 @@ public class Gauge {
         this.unit = unit;
     }
 
+
+    public void setSwatchWidth(int swatchWidth) {
+        this.swatchWidth = swatchWidth;
+    }
+
+
+    public void setSwatchHeight(int swatchHeight) {
+        this.swatchHeight = swatchHeight;
+    }
+
     /**
      * Returns a string representation of the gauge object.
      * @return a string representation of the gauge object.
      */
     @Override
     public String toString() {
-        return this.stitchesPerRow + ", " + this.rowsPerUnit + ", " + this.unit;
+        return this.stitchesPerRow + ", " + this.rowsPerUnit + ", " + this.unit + ", " + this.swatchWidth+ ", " + this.swatchHeight;
     }
 
 }

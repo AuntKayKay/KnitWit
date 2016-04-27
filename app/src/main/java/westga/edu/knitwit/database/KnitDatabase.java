@@ -4,6 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import westga.edu.knitwit.model.Gauge;
+import westga.edu.knitwit.model.Pattern;
+import westga.edu.knitwit.model.Progress;
+import westga.edu.knitwit.model.Project;
+
 /**
  * KnitDatabase Class
  * Created by Kaleigh on 4/26/2016.
@@ -25,6 +30,8 @@ public class KnitDatabase extends SQLiteOpenHelper {
     public static final String COLUMN_ROWSCOMPLETE = "rowscomplete";
     public static final String COLUMN_REPEATSCOMPLETE = "repeatscomplete";
 
+    //TODO :: Add height and width.
+
     /**
      * Constructor
      * @param context the  context.
@@ -35,6 +42,25 @@ public class KnitDatabase extends SQLiteOpenHelper {
     public KnitDatabase(Context context, String name,
                        SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
+    }
+
+    public void addGaugeToDB(Gauge theGauge){
+        //TODO :: Add Gauge Values to DB Record
+
+    }
+
+    public void addPatternToDB(Pattern thePattern){
+        //TODO :: Add Pattern Values to DB Record
+
+    }
+
+    public void addProgressToDB(Progress theProgress){
+        //TODO :: Add Progress Values to DB Record
+
+    }
+    public void addProjectToDB(Project theProject){
+        //TODO :: Add Project Values to DB Record
+
     }
 
     /**
@@ -56,6 +82,8 @@ public class KnitDatabase extends SQLiteOpenHelper {
                 + COLUMN_ROWSCOMPLETE + " INTEGER, "
                 + COLUMN_REPEATSCOMPLETE + " INTEGER" + ")";
         db.execSQL(CREATE_PRODUCTS_TABLE);
+
+        //TODO :: Add height and width.
     }
 
     /**

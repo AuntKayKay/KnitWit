@@ -1,5 +1,6 @@
 package westga.edu.knitwit.controller;
 
+import westga.edu.knitwit.database.KnitDatabase;
 import westga.edu.knitwit.model.Gauge;
 import westga.edu.knitwit.model.Pattern;
 import westga.edu.knitwit.model.Progress;
@@ -15,12 +16,29 @@ public class Controller {
     private Pattern thePattern;
     private Project theProject;
     private Progress theProgress;
+    private KnitDatabase db;
 
     /**
      * Constructor
      */
     public Controller(){
 
+    }
+
+    public void addGaugeToDB(){
+        this.db.addGaugeToDB(this.theGauge);
+    }
+
+    public void addPatternToDB(){
+        this.db.addPatternToDB(this.thePattern);
+    }
+
+    public void addProgressToDB(){
+        this.db.addProgressToDB(this.theProgress);
+    }
+
+    public void addProjectToDB(){
+        this.db.addProjectToDB(this.theProject);
     }
 
     //Accessor Methods//
