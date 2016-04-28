@@ -60,7 +60,8 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/sizeSpinner" />
+            android:id="@+id/sizeSpinner"
+            android:spinnerMode="dropdown" />
 
     </LinearLayout>
 
@@ -81,7 +82,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/rowSpinner"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:spinnerMode="dropdown" />
     </LinearLayout>
 
     <LinearLayout
@@ -101,7 +103,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/repeatSpinner"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:spinnerMode="dropdown" />
     </LinearLayout>
 
     <LinearLayout
