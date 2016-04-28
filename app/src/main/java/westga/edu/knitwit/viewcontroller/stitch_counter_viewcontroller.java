@@ -2,16 +2,17 @@ package westga.edu.knitwit.viewcontroller;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import westga.edu.knitwit.R;
 import westga.edu.knitwit.controller.Controller;
+import westga.edu.knitwit.database.KnitDatabase;
 import westga.edu.knitwit.model.Pattern;
 import westga.edu.knitwit.model.Progress;
 import westga.edu.knitwit.model.Project;
-
 /**
  * Stitch Counter View Controller Class
  * Created by Kaleigh on 4/26/2016.
@@ -22,10 +23,22 @@ public class stitch_counter_viewcontroller extends AppCompatActivity {
     private Project myProject = new Project();
     private Progress myProgress = new Progress();
     private Pattern myPattern = new Pattern();
+    private int recordID;
+    private int patternID;
+    private int projectID;
 
     private void load(){
+        Bundle bundle = getIntent().getExtras();
+        this.recordID = bundle.getInt("recordID");
+        this.patternID = bundle.getInt("patternID");
+        this.projectID = bundle.getInt("projectID");
+        Log.i("TAG:: recordID:", "" + this.recordID);
+        Log.i("TAG:: patternID:", "" + this.patternID);
+        Log.i("TAG:: projectID:", "" + this.projectID);
         this.myProject = this.myController.getTheProject();
+        this.myProgress = this.myController.getTheProgress();
         this.myPattern = this.myController.getThePattern();
+
         // TODO :: GET Project from DB
         //TODO :: GET Pattern from DB
     }
@@ -110,12 +123,13 @@ public class stitch_counter_viewcontroller extends AppCompatActivity {
     }
 
     private void saveButton() {
+        final KnitDatabase db = new KnitDatabase(this, null, null, 1);
         Button button = (Button) findViewById(R.id.saveButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 myController.setTheProgress(myProgress);
-                myController.addProgressToDB();
+                db.addProgressToDB(myProgress);
             }
         });
     }
@@ -123,7 +137,7 @@ public class stitch_counter_viewcontroller extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.digital_gauge);
+        setContentView(R.layout.stitch_counter);
         this.load();
         this.rowCount();
         this.patternRowCount();

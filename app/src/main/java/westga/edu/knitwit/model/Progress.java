@@ -9,6 +9,7 @@ public class Progress {
     public int rowsCompleted;
     public int patternRowsCompleted;
     public int patternRepeatsCompleted;
+    private int progressID;
 
     /**
      * Constructor
@@ -52,6 +53,10 @@ public class Progress {
         return this.patternRepeatsCompleted;
     }
 
+    public int getProgress() {
+        return this.progressID;
+    }
+
     //Mutator Methods//
 
     /**
@@ -78,9 +83,14 @@ public class Progress {
         this.patternRepeatsCompleted = patternRepeatsCompleted;
     }
 
+    public void setProgressID(int progressID) {
+        this.progressID = progressID;
+    }
+
+
     /**
      * Returns a string representation of the progress object.
-     * @return a string represenation of the progress object.
+     * @return a string representation of the progress object.
      */
     @Override
     public String toString() {
@@ -88,3 +98,4 @@ public class Progress {
     }
 
 }
+

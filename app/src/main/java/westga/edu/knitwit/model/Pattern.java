@@ -1,5 +1,4 @@
 package westga.edu.knitwit.model;
-
 /**
  * Pattern Class
  * Created by Kaleigh on 4/25/2016.
@@ -8,6 +7,7 @@ public class Pattern {
 
     private int repeatRows;
     private int patternRepeats;
+    private int patternID;
 
     /**
      * Constructor
@@ -34,6 +34,10 @@ public class Pattern {
         return this.patternRepeats;
     }
 
+    public int getPatternID() {
+        return this.patternID;
+    }
+
     //Mutator Methods//
 
     /**
@@ -50,6 +54,10 @@ public class Pattern {
      */
     public void setPatternRepeats(int patternRepeats) {
         this.patternRepeats = patternRepeats;
+    }
+
+    public void setPatternID(int patternID) {
+        this.patternID = patternID;
     }
 
     /**

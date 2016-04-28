@@ -12,7 +12,10 @@ import android.widget.TextView;
 
 import westga.edu.knitwit.R;
 import westga.edu.knitwit.controller.Controller;
+import westga.edu.knitwit.database.KnitDatabase;
+import westga.edu.knitwit.model.Pattern;
 import westga.edu.knitwit.model.Project;
+
 
 /**
  * Project View Controller Class
@@ -21,6 +24,10 @@ import westga.edu.knitwit.model.Project;
 public class project_viewcontroller extends AppCompatActivity {
     private Controller myController = new Controller();
     private Project myProject= new Project();
+    private Pattern myPattern = new Pattern();
+    private int recordID;
+    private int patternID;
+    private int projectID;
 
     private void name() {
         TextView nameTextView = (TextView)
@@ -40,7 +47,6 @@ public class project_viewcontroller extends AppCompatActivity {
                                       int before, int count) {
                 if (s.length() != 0 ) {
                     myProject.setProjectName(s.toString());
-                    checkAllFields();
                 }
             }
         });
@@ -63,8 +69,7 @@ public class project_viewcontroller extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
                 if (s.length() != 0 ) {
-                    myProject.setProjectName(s.toString());
-                    checkAllFields();
+                    myProject.setYarn(s.toString());
                 }
             }
         });
@@ -86,14 +91,28 @@ public class project_viewcontroller extends AppCompatActivity {
         if (this.myProject != null){
             Button button = (Button) findViewById(R.id.projectButton);
             button.setEnabled(true);
+            this.myProject.setGaugeID(recordID);
+            this.myProject.setProgressID(0);
+            this.myProject.setPatternID(this.patternID);
+            KnitDatabase db = new KnitDatabase(this, null, null, 1);
+            Log.i("project:", this.myProject.toString());
+            Log.i("pattern:", this.myPattern.toString());
             this.myController.setTheProject(this.myProject);
-            this.myController.addProjectToDB();
+            db.addProjectToDB(this.myProject);
+            this.projectID= db.getRecordID(this.myProject);
+            this.myController.setThePattern(this.myPattern);
+            db.addPatternToDB(this.myPattern);
+            this.patternID= db.getRecordID(this.myPattern);
         }
     }
 
-    private void nextScreen() {
+    private void nextScreenProject() {
+        checkAllFields();
         //Starts a new Intent
         Intent nextActivity = new Intent(getApplicationContext(), stitch_counter_viewcontroller.class);
+        nextActivity.putExtra("recordID", this.recordID);
+        nextActivity.putExtra("patternID", this.patternID);
+        nextActivity.putExtra("projectID", this.projectID);
 
         //http://developer.android.com/reference/android/util/Log.html
         Log.i("Send to ", "stitch counter");
@@ -106,7 +125,7 @@ public class project_viewcontroller extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nextScreen();
+                nextScreenProject();
             }
         });
     }

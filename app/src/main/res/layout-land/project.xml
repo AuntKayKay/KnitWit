@@ -6,8 +6,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,8 +25,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,8 +45,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,15 +57,15 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/sizeSpinner" />
+            android:id="@+id/sizeSpinner"
+            android:spinnerMode="dropdown" />
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
@@ -81,14 +78,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/rowSpinner"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:spinnerMode="dropdown" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
@@ -101,15 +98,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/repeatSpinner"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:spinnerMode="dropdown" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingTop="10dp">
+        android:gravity="center">
 
         <Button
             android:layout_width="wrap_content"

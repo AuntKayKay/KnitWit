@@ -11,6 +11,7 @@ public class Gauge {
     public int swatchWidth;
     public int swatchHeight;
     public String unit;
+    private int gaugeID;
 
     /**
      *  Constructor
@@ -55,6 +56,10 @@ public class Gauge {
         return this.swatchHeight;
     }
 
+    public int getGaugeID() {
+        return this.gaugeID;
+    }
+
     //Mutator Methods//
 
     /**
@@ -89,6 +94,10 @@ public class Gauge {
 
     public void setSwatchHeight(int swatchHeight) {
         this.swatchHeight = swatchHeight;
+    }
+
+    public void setGaugeID(int gaugeID) {
+        this.gaugeID = gaugeID;
     }
 
     /**

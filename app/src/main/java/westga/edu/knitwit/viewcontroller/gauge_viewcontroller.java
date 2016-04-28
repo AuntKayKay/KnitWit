@@ -12,6 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import westga.edu.knitwit.R;
 import westga.edu.knitwit.controller.Controller;
+import westga.edu.knitwit.database.KnitDatabase;
 import westga.edu.knitwit.model.Gauge;
 
 /**
@@ -22,6 +23,7 @@ public class gauge_viewcontroller extends AppCompatActivity {
 
     private Controller myController = new Controller();
     private Gauge myGauge = new Gauge();
+    private int recordID;
 
     private void stitches() {
         TextView stitchesTextView = (TextView)
@@ -143,13 +145,18 @@ public class gauge_viewcontroller extends AppCompatActivity {
             Button button = (Button) findViewById(R.id.calculateButton);
             button.setEnabled(true);
             this.myController.setTheGauge(this.myGauge);
-            this.myController.addGaugeToDB();
+            KnitDatabase db = new KnitDatabase(this, null, null, 1);
+            db.addGaugeToDB(this.myGauge);
+            this.recordID= db.getRecordID(this.myGauge);
+
         }
     }
 
     private void nextScreen() {
+        checkAllFields();
         //Starts a new Intent
         Intent nextActivity = new Intent(getApplicationContext(), digital_gauge_viewcontroller.class);
+        nextActivity.putExtra("recordID", this.recordID);
 
         //http://developer.android.com/reference/android/util/Log.html
         Log.i("Send to ", "digital_gauge Layout");
@@ -182,7 +189,7 @@ public class gauge_viewcontroller extends AppCompatActivity {
         try{
             result = Integer.parseInt(check);
         }catch (Throwable e) {
-        e.printStackTrace();
+            e.printStackTrace();
         }
         return result;
     }

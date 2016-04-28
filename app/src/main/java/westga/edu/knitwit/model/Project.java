@@ -6,9 +6,13 @@ package westga.edu.knitwit.model;
  */
 public class Project {
 
+    private int projectID;
     private String projectName;
     private String yarn;
-    private double needleSize;
+    private int needleSize;
+    private int gaugeID;
+    private int patternID;
+    private int progressID;
 
     /**
      * Constructor
@@ -32,15 +36,31 @@ public class Project {
      * @return the yarn.
      */
     public String getYarn() {
-        return this.getYarn();
+        return this.yarn;
     }
 
     /**
      * Gets the needle size.
      * @return the needle size.
      */
-    public double getNeedleSize() {
-        return this.getNeedleSize();
+    public int getNeedleSize() {
+        return this.needleSize;
+    }
+
+    public int getProjectID() {
+        return this.projectID;
+    }
+
+    public int getGaugeID() {
+        return this.gaugeID;
+    }
+
+    public int getPatternID() {
+        return this.patternID;
+    }
+
+    public int getProgressID() {
+        return this.progressID;
     }
 
     //Mutator Methods//
@@ -65,8 +85,24 @@ public class Project {
      * Sets the needle size.
      * @param needleSize the needle size.
      */
-    public void setNeedleSize(double needleSize) {
+    public void setNeedleSize(int needleSize) {
         this.needleSize = needleSize;
+    }
+
+    public void setProjectID(int projectID) {
+        this.projectID = projectID;
+    }
+
+    public void setGaugeID(int gaugeID) {
+        this.gaugeID = gaugeID;
+    }
+
+    public void setPatternID(int patternID) {
+        this.patternID = patternID;
+    }
+
+    public void setProgressID(int progressID) {
+        this.progressID = progressID;
     }
 
     /**

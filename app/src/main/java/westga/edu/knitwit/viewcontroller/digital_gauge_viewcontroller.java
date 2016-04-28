@@ -11,61 +11,67 @@ import android.widget.TextView;
 import westga.edu.knitwit.R;
 import westga.edu.knitwit.controller.Controller;
 import westga.edu.knitwit.model.Gauge;
+import westga.edu.knitwit.database.KnitDatabase;
 
 /**
- * Digital Gauge View Controller Class
- * Created by Kaleigh on 4/26/2016.
- */
+* Digital Gauge View Controller Class
+* Created by Kaleigh on 4/26/2016.
+*/
 public class digital_gauge_viewcontroller extends AppCompatActivity {
 
     private Controller myController = new Controller();
     private Gauge myGauge = new Gauge();
+    private int recordID;
 
     private void load(){
-        this.myGauge = this.myController.getTheGauge();
-        // TODO :: GET Gauge from DB
+        KnitDatabase db = new KnitDatabase(this, null, null, 1);
+        Bundle bundle = getIntent().getExtras();
+        this.recordID = bundle.getInt("recordID");
+        Log.i("TAG:: recordID:", ""+this.recordID);
+        this.myGauge = db.getGaugeFromDB(this.recordID);
+        Log.i("TAG:: gauge:", ""+this.myGauge.toString());
     }
 
     private void setStitchesTextView() {
         TextView swatchWidthTextView = (TextView)
                 findViewById(R.id.stitchesTextView);
-        swatchWidthTextView.setText(this.myGauge.getStitchesPerRow());
+        swatchWidthTextView.setText("" + this.myGauge.getStitchesPerRow());
     }
 
     private void setRowsTextView() {
         TextView rowsTextView = (TextView)
                 findViewById(R.id.rowsTextView);
-        rowsTextView.setText(this.myGauge.getRowsPerUnit());
+        rowsTextView.setText("" + this.myGauge.getRowsPerUnit());
     }
 
     private void setWidthTextView() {
         TextView widthTextView = (TextView)
                 findViewById(R.id.widthTextView);
-        widthTextView.setText(this.myGauge.getSwatchWidth());
+        widthTextView.setText("" + this.myGauge.getSwatchWidth());
     }
 
     private void setHeightTextView() {
         TextView heightTextView = (TextView)
                 findViewById(R.id.heightTextView);
-        heightTextView.setText(this.myGauge.getSwatchHeight());
+        heightTextView.setText("" + this.myGauge.getSwatchHeight());
     }
 
     private void setStitchesGaugeTextView() {
         TextView stitchesGaugeTextView = (TextView)
                 findViewById(R.id.stitchesGaugeTextView);
-        stitchesGaugeTextView.setText(this.myGauge.getStitchesPerRow()/this.myGauge.getSwatchWidth());
+        stitchesGaugeTextView.setText(""+this.myGauge.getStitchesPerRow()/this.myGauge.getSwatchWidth());
     }
 
     private void setRowsGaugeTextView() {
         TextView  rowsGaugeTextView = (TextView)
                 findViewById(R.id. rowsGaugeTextView);
-        rowsGaugeTextView.setText(this.myGauge.getRowsPerUnit()/this.myGauge.getSwatchHeight());
+        rowsGaugeTextView.setText(""+this.myGauge.getRowsPerUnit()/this.myGauge.getSwatchHeight());
     }
 
     private void setMeasurementTextView() {
         TextView measurementTextView = (TextView)
                 findViewById(R.id.measurementTextView);
-        measurementTextView.setText(this.myGauge.getUnit());
+        measurementTextView.setText("" + this.myGauge.getUnit());
     }
 
 

@@ -1,5 +1,7 @@
 package westga.edu.knitwit.controller;
 
+import android.support.v7.app.AppCompatActivity;
+
 import westga.edu.knitwit.database.KnitDatabase;
 import westga.edu.knitwit.model.Gauge;
 import westga.edu.knitwit.model.Pattern;
@@ -10,35 +12,19 @@ import westga.edu.knitwit.model.Project;
  * Controller Class
  * Created by Kaleigh on 4/26/2016.
  */
-public class Controller {
+public class Controller extends AppCompatActivity {
 
     private Gauge theGauge;
     private Pattern thePattern;
     private Project theProject;
     private Progress theProgress;
-    private KnitDatabase db;
+    private KnitDatabase db= new KnitDatabase(this, null, null, 1);
 
     /**
      * Constructor
      */
-    public Controller(){
+    public Controller() {
 
-    }
-
-    public void addGaugeToDB(){
-        this.db.addGaugeToDB(this.theGauge);
-    }
-
-    public void addPatternToDB(){
-        this.db.addPatternToDB(this.thePattern);
-    }
-
-    public void addProgressToDB(){
-        this.db.addProgressToDB(this.theProgress);
-    }
-
-    public void addProjectToDB(){
-        this.db.addProjectToDB(this.theProject);
     }
 
     //Accessor Methods//
