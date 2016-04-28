@@ -7,6 +7,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -70,7 +72,7 @@ public class project_viewcontroller extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if (s.length() != 0 ) {
+                if (s.length() != 0) {
                     myProject.setYarn(s.toString());
                 }
             }
@@ -78,7 +80,7 @@ public class project_viewcontroller extends AppCompatActivity {
     }
 
     private void loadSpinners() {
-       Spinner spinner_size = (Spinner) findViewById(R.id.sizeSpinner);
+        Spinner spinner_size = (Spinner) findViewById(R.id.sizeSpinner);
         ArrayAdapter<CharSequence> adapter_size = ArrayAdapter.createFromResource(this, R.array.needles_array, android.R.layout.simple_spinner_dropdown_item);
         adapter_size.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_size.setAdapter(adapter_size);
@@ -95,15 +97,69 @@ public class project_viewcontroller extends AppCompatActivity {
     }
 
     private void sizeSpinner(){
-        // TODO :: GET sizeSpinner Data
+        Spinner spinner_size = (Spinner) findViewById(R.id.sizeSpinner);
+        spinner_size.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            protected Adapter initializedAdapter=null;
+
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(initializedAdapter !=parentView.getAdapter() ) {
+                    initializedAdapter = parentView.getAdapter();
+                    return;
+                }
+                myProject.setNeedleSize(Integer.parseInt(parentView.getItemAtPosition(position).toString()));
+
+            }
+
+            @Override
+        public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+        });
     }
 
     private void rowSpinner(){
-        // TODO :: GET rowSpinner Data
+        Spinner spinner_row = (Spinner) findViewById(R.id.rowSpinner);
+        spinner_row.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            protected Adapter initializedAdapter=null;
+
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(initializedAdapter !=parentView.getAdapter() ) {
+                    initializedAdapter = parentView.getAdapter();
+                    return;
+                }
+                myPattern.setRepeatRows(Integer.parseInt(parentView.getItemAtPosition(position).toString()));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+        });
     }
 
     private void repeatSpinner(){
-        //TODO :: GET repeatSpinner Data
+        Spinner spinner_repeat = (Spinner) findViewById(R.id.repeatSpinner);
+        spinner_repeat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            protected Adapter initializedAdapter=null;
+
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(initializedAdapter !=parentView.getAdapter() ) {
+                    initializedAdapter = parentView.getAdapter();
+                    return;
+                }
+                myPattern.setPatternRepeats(Integer.parseInt(parentView.getItemAtPosition(position).toString()));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+        });
     }
 
     private void checkAllFields(){
