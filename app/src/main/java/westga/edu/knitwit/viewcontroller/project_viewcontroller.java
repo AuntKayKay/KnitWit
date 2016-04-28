@@ -7,7 +7,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import westga.edu.knitwit.R;
@@ -75,6 +77,23 @@ public class project_viewcontroller extends AppCompatActivity {
         });
     }
 
+    private void loadSpinners() {
+       Spinner spinner_size = (Spinner) findViewById(R.id.sizeSpinner);
+        ArrayAdapter<CharSequence> adapter_size = ArrayAdapter.createFromResource(this, R.array.needles_array, android.R.layout.simple_spinner_dropdown_item);
+        adapter_size.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_size.setAdapter(adapter_size);
+
+        Spinner spinner_row = (Spinner) findViewById(R.id.rowSpinner);
+        ArrayAdapter<CharSequence> adapter_row = ArrayAdapter.createFromResource(this, R.array.rowsInRepeat_array, android.R.layout.simple_spinner_dropdown_item);
+        adapter_row.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_row.setAdapter(adapter_row);
+
+        Spinner spinner_repeat = (Spinner) findViewById(R.id.repeatSpinner);
+        ArrayAdapter<CharSequence> adapter_repeat = ArrayAdapter.createFromResource(this, R.array.patternRepeat_array, android.R.layout.simple_spinner_dropdown_item);
+        adapter_repeat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_repeat.setAdapter(adapter_repeat);
+    }
+
     private void sizeSpinner(){
         // TODO :: GET sizeSpinner Data
     }
@@ -140,5 +159,6 @@ public class project_viewcontroller extends AppCompatActivity {
         this.rowSpinner();
         this.repeatSpinner();
         this.buttonClick();
+        this.loadSpinners();
     }
 }
